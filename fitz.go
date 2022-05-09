@@ -347,7 +347,7 @@ func (f *Document) TextByBounds(pageNumber int, dpi float64, x0, y0, x1, y1 floa
 	defer C.fz_drop_device(f.ctx, device)
 
 	var cookie C.fz_cookie
-	C.fz_run_page_contents_contents(f.ctx, page, device, ctm, &cookie)
+	C.fz_run_page_contents(f.ctx, page, device, ctm, &cookie)
 
 	C.fz_close_device(f.ctx, device)
 	rect := C.fz_make_rect(C.float(x0), C.float(y0), C.float(x1), C.float(y1))
